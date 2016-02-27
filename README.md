@@ -5,13 +5,15 @@ Install NodeJS and npm from Node's official website.
 
 run the server as:
 
-$node asyncAttempt.js 
+#$node asyncAttempt.js 
 
 
 
 
 the UI can be accessed at:
-http://localhost:3000/
+#http://localhost:3000/
+
+Enter the URL of the repo in the text box and click anywhere when ready.
 
 
 
