@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Issue Track</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+html,body{
+  background:#f6f6f6;
+  height:100%;
+}
+  #git:focus{ 
+    width:100%;
+    background: #fff;
+}
+
+#git{
+  background: #ccc;
+  width:50%;
+  -webkit-transition: width 1s; /* Safari */
+    transition: width 1s;
+  }
+  table{width:50%;}
+  th{color:#aaa;}
+  td{color:#337ab7;
+  }
+
+</style>
+
+  </head>
+  <body>
+  <div class="container" style="height:90%">
+    <div class="row">
+    <h3 style="color: #337ab7;" class="text-center">Issue Track</h3>  
+    <img src="git_icon.png" align="middle" class="img-responsive center-block" style="height:100px; width:150px;"/>
+    </div>
+    <br><br>
+
+    <br><br><br>
+    <div class="row">
+      <input style="color:#337ab7;" name="git" id="git" type="text" class="form-control text-center" placeholder="git repository - URL" onblur="check();"/>
+      
+    </div>
+<br><br><br><br>
+    <div class="row">
+    <div class ="container">
+    <img src="load.gif" id="loading-indicator" class="img-responsive center-block" style="display:none" />
+      <table class="table" style="width:50%">
+        <tr><th># of open issues :</th> <td><p id = "open"></p></td></tr>
+
+        <tr><th># of issues updated in last 24hrs :</th> <td><p id="twenty"></p></td></tr>
+
+        <tr><th># of issues updated in last 7 days :</th> <td><p id="seven"></p></td></tr>
+
+      </table>
+
+    </div>
+    </div>
+
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted text-center">Shippable Task -- Owner: Dhruv Batheja</p>
+    </div>
+  </footer>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ajax.js"></script>
+  </body>
+</html>
