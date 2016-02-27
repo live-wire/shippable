@@ -1,4 +1,4 @@
-  var express = require('express');
+var express = require('express');
   var path = require('path');
   var favicon = require('serve-favicon');
   var logger = require('morgan');
@@ -55,8 +55,6 @@
     module.exports = app;
 
 
-
-
   //This method is called after All the issues are fetched from git API (after all the requests)
   function parser(res,returnValue,responseBody)
   {
@@ -66,7 +64,7 @@
     var twenty = 0;
     var d = new Date();
     var n = d.getTime();
-    
+
     for(i in responseBody)
     {
 
@@ -83,10 +81,10 @@
         seven++;
 
       //console.log(util.inspect(responseBody[i],false,null)+" "+open);
-      
-      
+
+
     }
-    
+
     returnValue.open = open;
     returnValue.twenty = twenty;
     returnValue.seven = seven;
@@ -111,7 +109,7 @@ function processURL(req,res,page,jsonFormed) {
       twenty : 0
     };
 
-    try{
+      try{
       var str = req.body.link;
       var n = str.search(/github.com/i);
       n = n+11;
@@ -133,7 +131,7 @@ function processURL(req,res,page,jsonFormed) {
     //Each request fetches 100 issues
     for(var i=page;i<limit;i++){
 
-      var gitAPIlink = "https://api.github.com/repos/"+owner+"/"+repo+"/issues?per_page=100&page="+i+"&access_token=703fcf2e75603279839e2140097791882c55295b";
+      var gitAPIlink = "https://api.github.com/repos/"+owner+"/"+repo+"/issues?per_page=100&page="+i+"&access_token=470c4a17ef65755d5dd8acc0e00cb02370e3ff9c";
       console.log("GET   "+ gitAPIlink);
       var options = {
         headers: {'user-agent': 'node.js'}
@@ -157,8 +155,12 @@ function processURL(req,res,page,jsonFormed) {
                     //console.log("needed =" +limit+" Encountered="+pagesEncountered);
                     if(pagesEncountered == limit-1)
                     {
-
-                      if(jsonFormed.length % 100 != 0)
+                        if(jsonFormed.length ==0)
+                        {
+                        returnBool = true;
+                        parser(res,returnValue,jsonFormed);
+                        }
+                      else if(jsonFormed.length % 100 != 0)
                       {
                         returnBool = true;
                         parser(res,returnValue,jsonFormed);
@@ -200,5 +202,4 @@ app.post('/processURL', function (req, res) {-
 
 
 app.listen(3000);
-
-
+console.log("Server UP");
